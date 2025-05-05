@@ -1,0 +1,257 @@
+/* Variáveis */
+:root {
+    --gold: #D4AF37;
+    --black: #121212;
+    --dark-gray: #1A1A1A;
+    --light-gray: #E5E5E5;
+    --white: #FFFFFF;
+    --font-title: 'Playfair Display', serif;
+    --font-text: 'Montserrat', sans-serif;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-text);
+    background: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+}
+
+/* Layout Dual */
+.dual-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.text-side {
+    flex: 1;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('imagens/fundo-luxo.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.text-content {
+    max-width: 500px;
+    text-align: center;
+}
+
+.text-side h1 {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.text-side h2 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+.gold-line {
+    width: 100px;
+    height: 2px;
+    background: var(--gold);
+    margin: 2rem auto;
+}
+
+.slogan {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+.highlight {
+    border: 1px solid var(--gold);
+    padding: 1.5rem 3rem;
+    display: inline-block;
+}
+
+.highlight p {
+    font-family: var(--font-title);
+    letter-spacing: 5px;
+    color: var(--gold);
+}
+
+/* Formulário */
+.form-side {
+    flex: 1;
+    background: var(--dark-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-content {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-side h3 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--light-gray);
+    padding: 1rem 0;
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-bottom-color: var(--gold);
+}
+
+.input-group label {
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    color: var(--light-gray);
+    transition: all 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -0.5rem;
+    font-size: 0.8rem;
+    color: var(--gold);
+}
+
+button {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 1rem 2rem;
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #b8962d;
+}
+
+/* Novas Seções (mesmo estilo) */
+.section-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+h2 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Características */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature {
+    background: var(--dark-gray);
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #2a2a2a;
+}
+
+.feature h3 {
+    color: var(--gold);
+    font-family: var(--font-title);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* Galeria */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Localização */
+.location-desc {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--gold);
+    font-style: italic;
+}
+
+.map {
+    border: 1px solid var(--gold);
+    padding: 5px;
+}
+
+/* Rodapé */
+footer {
+    background: var(--dark-gray);
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid #2a2a2a;
+}
+
+.logo-footer {
+    width: 60px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .dual-container {
+        flex-direction: column;
+    }
+    
+    .text-side, .form-side {
+        padding: 4rem 2rem;
+    }
+    
+    .text-side h1 {
+        font-size: 2.5rem;
+    }
+    
+    .text-side h2 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+}
