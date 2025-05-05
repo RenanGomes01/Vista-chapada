@@ -174,18 +174,37 @@ h2 {
     margin-bottom: 3rem;
 }
 
-/* Características */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
+/* Seção Características - Ajuste dos Ícones */
 .feature {
+    position: relative;
     background: var(--dark-gray);
-    padding: 2rem;
+    padding: 2.5rem 1.5rem;
     text-align: center;
     border: 1px solid #2a2a2a;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 300px; /* Altura mínima para uniformidade */
+}
+
+.feature img {
+    width: 70px; /* Tamanho fixo para todos os ícones */
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    filter: brightness(0) saturate(100%) invert(77%) sepia(39%) saturate(495%) 
+            hue-rotate(358deg) brightness(89%) contrast(85%);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.feature:hover img {
+    transform: scale(1.1);
 }
 
 .feature h3 {
@@ -193,6 +212,45 @@ h2 {
     font-family: var(--font-title);
     margin-bottom: 1rem;
     font-size: 1.3rem;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.feature h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+}
+
+.feature p {
+    color: var(--light-gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: auto; /* Alinha o texto na base */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .feature {
+        min-height: auto;
+        padding: 2rem 1rem;
+    }
+    
+    .feature img {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 /* Galeria */
