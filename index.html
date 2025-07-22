@@ -4,108 +4,366 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vista dos Guimarães | Luxo Brasileiro</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./estilo/estilo.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Tailwind CSS para responsividade e utilitários -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos Globais e Personalizados */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212; /* --black */
+            color: #FFFFFF; /* --white */
+            line-height: 1.6;
+        }
+
+        /* Animações de Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estilos do Lightbox da Galeria */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.active { opacity: 1; pointer-events: all; }
+        .lightbox img { max-width: 90%; max-height: 80%; object-fit: contain; }
+        .lightbox-close, .lightbox-prev, .lightbox-next {
+            position: absolute; color: white; font-size: 2rem;
+            cursor: pointer; user-select: none;
+        }
+        .lightbox-close { top: 20px; right: 30px; }
+        .lightbox-prev { left: 30px; }
+        .lightbox-next { right: 30px; }
+
+        /* Layout Dual */
+        .dual-container { display: flex; min-height: 100vh; }
+        .text-side {
+            flex: 1;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center; padding: 2rem;
+        }
+        .text-content { max-width: 500px; text-align: center; }
+        .font-title { font-family: 'Playfair Display', serif; }
+        .gold-text { color: #D4AF37; }
+        .gold-border { border-color: #D4AF37; }
+        .gold-bg { background-color: #D4AF37; }
+        .hover-gold-bg:hover { background-color: #b8962d; }
+        .hover-gold-text:hover { color: #D4AF37; }
+
+        /* Formulário */
+        .form-side {
+            flex: 1; background-color: #1A1A1A; /* --dark-gray */
+            display: flex; align-items: center; justify-content: center; padding: 2rem;
+        }
+        .input-group input {
+            width: 100%; background: transparent; border: none;
+            border-bottom: 1px solid #E5E5E5; /* --light-gray */
+            padding: 1rem 0; color: #FFFFFF; font-size: 1rem;
+        }
+        .input-group input:focus { outline: none; border-bottom-color: #D4AF37; }
+        .input-group label {
+            position: absolute; left: 0; top: 1rem; color: #E5E5E5;
+            transition: all 0.3s; pointer-events: none;
+        }
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            top: -0.5rem; font-size: 0.8rem; color: #D4AF37;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .dual-container { flex-direction: column; }
+            .text-side, .form-side { min-height: auto; }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header/Menu de Navegação -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white font-title">Vista dos Guimarães</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#diferenciais" class="text-white hover-gold-text transition font-title">Diferenciais</a>
+                <a href="#plantas" class="text-white hover-gold-text transition font-title">Plantas</a>
+                <a href="#galeria" class="text-white hover-gold-text transition font-title">Galeria</a>
+                <a href="#localizacao" class="text-white hover-gold-text transition font-title">Localização</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white"><i class="fas fa-bars fa-lg"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
+            <a href="#diferenciais" class="block py-2 px-6 text-white hover:bg-gray-800">Diferenciais</a>
+            <a href="#plantas" class="block py-2 px-6 text-white hover:bg-gray-800">Plantas</a>
+            <a href="#galeria" class="block py-2 px-6 text-white hover:bg-gray-800">Galeria</a>
+            <a href="#localizacao" class="block py-2 px-6 text-white hover:bg-gray-800">Localização</a>
+        </div>
+    </header>
+
     <!-- Topo (Layout Dividido) -->
     <div class="dual-container">
-        <!-- Coluna Esquerda (Texto) -->
         <div class="text-side">
             <div class="text-content">
-                <h1>VISTA DOS GUIMARÃES</h1>
-                <h2>O SEGREDO DO LUXO BRASILEIRO</h2>
-                
-                <div class="gold-line"></div>
-                
-                <p class="slogan">Vista dos Guimarães:<br>O Segredo do Luxo Brasileiro</p>
-                
-                <div class="highlight">
-                    <p>EM BREVE</p>
+                <h1 class="text-4xl md:text-5xl gold-text font-title">VISTA DOS GUIMARÃES</h1>
+                <h2 class="text-xl md:text-2xl font-title">O SEGREDO DO LUXO BRASILEIRO</h2>
+                <div class="w-24 h-0.5 gold-bg my-8 mx-auto"></div>
+                <p class="text-lg md:text-xl mb-12 italic">Vista dos Guimarães:<br>O Segredo do Luxo Brasileiro</p>
+                <div class="border gold-border py-6 px-12 inline-block">
+                    <p class="tracking-widest gold-text font-title">EM BREVE</p>
                 </div>
             </div>
         </div>
-
-        <!-- Coluna Direita (Formulário) -->
         <div class="form-side">
-            <div class="form-content">
-                <h3>Receba mais informações</h3>
-                <form>
-                    <div class="input-group">
-                        <input type="text" id="name" placeholder=" " required>
+            <div class="form-content w-full max-w-sm">
+                <h3 class="text-3xl gold-text mb-8 text-center font-title">Receba mais informações</h3>
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="SUA_ACCESS_KEY_AQUI">
+                    <div class="input-group relative mb-6">
+                        <input type="text" id="name" name="name" placeholder=" " required>
                         <label for="name">Nome</label>
                     </div>
-                    <div class="input-group">
-                        <input type="email" id="email" placeholder=" " required>
+                    <div class="input-group relative mb-6">
+                        <input type="email" id="email" name="email" placeholder=" " required>
                         <label for="email">E-mail</label>
                     </div>
-                    <div class="input-group">
-                        <input type="tel" id="phone" placeholder=" ">
+                    <div class="input-group relative mb-6">
+                        <input type="tel" id="phone" name="phone" placeholder=" ">
                         <label for="phone">Telefone</label>
                     </div>
-                    <button type="submit">ENVIAR</button>
+                    <button type="submit" class="gold-bg text-black w-full py-4 font-semibold cursor-pointer transition-colors hover-gold-bg">ENVIAR</button>
                 </form>
+                <div id="form-success-message" class="hidden mt-4 text-center text-green-400">Mensagem enviada com sucesso! Entraremos em contato em breve.</div>
             </div>
         </div>
     </div>
 
-    <!-- Seção Características (Nova) -->
-    <section class="features">
-        <div class="section-inner">
-            <h2>CARACTERÍSTICAS</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <img src="./img/residencia-removebg-preview.png" alt="Residências Exclusivas">
-                    <h3>RESIDÊNCIA EXCLUSIVA</h3>
-                    <p>Design arquitetônico único com materiais premium</p>
+    <!-- Seção Diferenciais -->
+    <section id="diferenciais" class="bg-black">
+        <div class="section-inner reveal py-20">
+            <h2 class="text-4xl mb-12 text-center gold-text font-title">DIFERENCIAIS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature text-center p-8 bg-dark-gray border border-gray-800 hover:gold-border hover:-translate-y-2 transition-transform duration-300">
+                    <i class="fas fa-swimmer fa-3x gold-text mb-4"></i>
+                    <h3 class="text-xl gold-text mb-2 font-title">Piscina com Borda Infinita</h3>
+                    <p class="text-light-gray">Uma vista deslumbrante que se funde com o horizonte da Chapada.</p>
                 </div>
-                <div class="feature">
-                    <img src="./img/ambiente_natural-removebg-preview.png" alt="Ambiente Naturais">
-                    <h3>AMBIENTE NATURAL</h3>
-                    <p>Integração perfeita com a paisagem local</p>
+                <div class="feature text-center p-8 bg-dark-gray border border-gray-800 hover:gold-border hover:-translate-y-2 transition-transform duration-300">
+                    <i class="fas fa-utensils fa-3x gold-text mb-4"></i>
+                    <h3 class="text-xl gold-text mb-2 font-title">Espaço Gourmet</h3>
+                    <p class="text-light-gray">Área equipada para receber amigos e família com sofisticação.</p>
                 </div>
-                <div class="feature">
-                    <img src="./img/arquitetura-removebg-preview.png" alt="Arquitetura Sofisticada">
-                    <h3>ARQUITETURA SOFISTICADA</h3>
-                    <p>Linhas contemporâneas que valorizam o luxo</p>
+                <div class="feature text-center p-8 bg-dark-gray border border-gray-800 hover:gold-border hover:-translate-y-2 transition-transform duration-300">
+                    <i class="fas fa-cogs fa-3x gold-text mb-4"></i>
+                    <h3 class="text-xl gold-text mb-2 font-title">Automação Residencial</h3>
+                    <p class="text-light-gray">Controle de iluminação, som e climatização na palma da sua mão.</p>
                 </div>
-                <div class="feature">
-                    <img src="./img/localização-removebg-preview.png" alt="Localização Privilegiada">
-                    <h3>LOCALIZAÇÃO PRIVILEGIADA</h3>
-                    <p>Vistas panorâmicas deslumbrantes</p>
+                <div class="feature text-center p-8 bg-dark-gray border border-gray-800 hover:gold-border hover:-translate-y-2 transition-transform duration-300">
+                    <i class="fas fa-solar-panel fa-3x gold-text mb-4"></i>
+                    <h3 class="text-xl gold-text mb-2 font-title">Energia Solar</h3>
+                    <p class="text-light-gray">Sustentabilidade e economia com sistema fotovoltaico integrado.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Galeria (Nova) -->
-    <section class="gallery">
-        <div class="section-inner">
-            <h2>GALERIA</h2>
-            <div class="gallery-grid">
-                <img src="imagens/galeria1.jpg" alt="Vista do empreendimento">
-                <img src="imagens/galeria2.jpg" alt="Área de lazer">
-                <img src="imagens/galeria3.jpg" alt="Interiores">
-                <img src="imagens/galeria4.jpg" alt="Vista panorâmica">
+    <!-- Seção Plantas Baixas -->
+    <section id="plantas" style="background-color: #1A1A1A;">
+        <div class="section-inner reveal py-20">
+            <h2 class="text-4xl mb-12 text-center gold-text font-title">PLANTAS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="p-4 border border-gray-800">
+                    <img src="./img/planta 3.jpg" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x600/1A1A1A/FFFFFF?text=Planta+Indispon%C3%ADvel';"
+                         alt="Planta da Casa Serra" class="w-full h-auto">
+                </div>
+                <div>
+                    <h3 class="text-3xl gold-text mb-4 font-title">Casa Serra</h3>
+                    <p class="text-light-gray mb-4">Uma residência que privilegia a integração de ambientes e a vista para a natureza. Ideal para quem busca conforto e sofisticação.</p>
+                    <ul class="text-white space-y-2">
+                        <li><i class="fas fa-ruler-combined gold-text mr-2"></i>Área de 250m²</li>
+                        <li><i class="fas fa-bed gold-text mr-2"></i>3 Suítes</li>
+                        <li><i class="fas fa-bath gold-text mr-2"></i>4 Casas de Banho</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Localização (Nova) -->
-    <section class="location">
-        <div class="section-inner">
-            <h2>LOCALIZAÇÃO</h2>
-            <p class="location-desc">Acessível e cercado por uma vista privilegiada</p>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.715427005354!2d-43.93243692433878!3d-19.9400278814661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6999ed62daafd%3A0x566567078ffa823e!2sChapada%20dos%20Guimar%C3%A3es!5e0!3m2!1spt-BR!2sbr!4v1712345678901!5m2!1spt-BR!2sbr" 
+    <!-- Seção Galeria -->
+    <section id="galeria" class="bg-black">
+        <div class="section-inner reveal py-20">
+            <h2 class="text-4xl mb-12 text-center gold-text font-title">GALERIA</h2>
+            <div class="gallery-grid grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="gallery-item cursor-pointer">
+                    <img src="./img/frontal.jpg" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x800/1A1A1A/D4AF37?text=Imagem+1';"
+                         alt="Fachada da residência de luxo">
+                </div>
+                <div class="gallery-item cursor-pointer">
+                    <img src="./img/diagonal.jpg" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x800/1A1A1A/D4AF37?text=Imagem+2';"
+                         alt="Área da piscina ao entardecer">
+                </div>
+                <div class="gallery-item cursor-pointer">
+                    <img src="./img/fundo.jpg" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x800/1A1A1A/D4AF37?text=Imagem+3';"
+                         alt="Interior da sala de estar com design moderno">
+                </div>
+                <div class="gallery-item cursor-pointer">
+                    <img src="./img/interior 2.jpg" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x800/1A1A1A/D4AF37?text=Imagem+4';"
+                         alt="Cozinha gourmet com acabamentos de luxo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox da Galeria -->
+    <div id="lightbox" class="lightbox">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="">
+        <span id="lightbox-prev" class="lightbox-prev">&#10094;</span>
+        <span id="lightbox-next" class="lightbox-next">&#10095;</span>
+    </div>
+
+    <!-- Seção Localização -->
+    <section id="localizacao" style="background-color: #1A1A1A;">
+        <div class="section-inner reveal py-20">
+            <h2 class="text-4xl mb-12 text-center gold-text font-title">LOCALIZAÇÃO</h2>
+            <p class="text-center mb-8 gold-text italic">Acessível e cercado por uma vista privilegiada</p>
+            <div class="map border gold-border p-1">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.6789012345!2d-55.75!3d-15.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDI3JzAwLjAiUyA1NcKwNDUnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr"
                         width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>© 2025 Vista dos Guimarães</p>
-        <img src="./img/logo dev dorada.png" alt="Logo Dev Soluciona" class="logo-footer">
+    <footer class="bg-black text-center py-8 border-t border-gray-800">
+        <p>© <span id="year"></span> Vista dos Guimarães. Todos os direitos reservados.</p>
+        <img src="https://placehold.co/120x40/121212/D4AF37?text=Logo+Dev" alt="Logo Dev Soluciona" class="mx-auto mt-4">
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Lógica do Menu de Navegação ---
+            const header = document.getElementById('main-header');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-black', 'bg-opacity-80', 'backdrop-blur-sm');
+                } else {
+                    header.classList.remove('bg-black', 'bg-opacity-80', 'backdrop-blur-sm');
+                }
+            });
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            document.querySelectorAll('#mobile-menu a, nav a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            // --- Lógica das Animações de Scroll ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- Lógica da Galeria Lightbox ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            let currentIndex = 0;
+
+            const images = Array.from(galleryItems).map(item => item.querySelector('img').src);
+
+            function showImage(index) {
+                lightboxImg.src = images[index];
+                currentIndex = index;
+            }
+
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    lightbox.classList.add('active');
+                    showImage(index);
+                });
+            });
+
+            document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('active'));
+            document.getElementById('lightbox-prev').addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                showImage(currentIndex);
+            });
+            document.getElementById('lightbox-next').addEventListener('click', () => {
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                showImage(currentIndex);
+            });
+            
+            // --- Lógica do Formulário ---
+            const form = document.getElementById('contact-form');
+            const successMessage = document.getElementById('form-success-message');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const object = {};
+                formData.forEach((value, key) => {
+                    object[key] = value;
+                });
+                const json = JSON.stringify(object);
+                
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+                        successMessage.classList.remove('hidden');
+                        form.reset();
+                    } else {
+                        console.log(response);
+                        alert(jsonResponse.message);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("Algo deu errado, tente novamente.");
+                });
+            });
+
+
+            // --- Lógica do Ano no Rodapé ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>
