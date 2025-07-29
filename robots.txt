@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://vistadosguimaraes.com/sitemap.xml
+
+# Tempo de espera entre requisições (em segundos)
+Crawl-delay: 1
+
+# Permitir acesso a recursos importantes
+Allow: /img/
+Allow: /estilo/
+
+# Bloquear acesso a arquivos desnecessários
+Disallow: /img/optimized/
+Disallow: *.log
+Disallow: *.tmp

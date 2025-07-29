@@ -3,95 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista dos Guimarães | Luxo Brasileiro</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Tailwind CSS para responsividade e utilitários -->
+    
+    <!-- SEO Meta Tags -->
+    <title>Vista dos Guimarães | Residência de Luxo na Chapada dos Guimarães - MT</title>
+    <meta name="description" content="Descubra o segredo do luxo brasileiro na Vista dos Guimarães. Residência exclusiva com piscina de borda infinita, espaço gourmet e automação residencial na Chapada dos Guimarães.">
+    <meta name="keywords" content="residência de luxo, Chapada dos Guimarães, piscina borda infinita, espaço gourmet, automação residencial, energia solar, casa de luxo, Mato Grosso">
+    <meta name="author" content="Vista dos Guimarães">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vistadosguimaraes.com/">
+    <meta property="og:title" content="Vista dos Guimarães | Luxo Brasileiro na Chapada">
+    <meta property="og:description" content="Residência exclusiva com vista deslumbrante da Chapada dos Guimarães. Piscina de borda infinita, espaço gourmet e tecnologia de ponta.">
+    <meta property="og:image" content="https://vistadosguimaraes.com/img/frontal.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vistadosguimaraes.com/">
+    <meta property="twitter:title" content="Vista dos Guimarães | Luxo Brasileiro na Chapada">
+    <meta property="twitter:description" content="Residência exclusiva com vista deslumbrante da Chapada dos Guimarães. Piscina de borda infinita, espaço gourmet e tecnologia de ponta.">
+    <meta property="twitter:image" content="https://vistadosguimaraes.com/img/frontal.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://vistadosguimaraes.com/">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"></noscript>
+    
+    <!-- Font Awesome with preload -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "RealEstateListing",
+        "name": "Vista dos Guimarães",
+        "description": "Residência de luxo com vista deslumbrante da Chapada dos Guimarães",
+        "image": "https://vistadosguimaraes.com/img/frontal.jpg",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Chapada dos Guimarães",
+            "addressRegion": "MT",
+            "addressCountry": "BR"
+        },
+        "amenityFeature": [
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Piscina com Borda Infinita",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification", 
+                "name": "Espaço Gourmet",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Automação Residencial", 
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Energia Solar",
+                "value": true
+            }
+        ],
+        "floorSize": {
+            "@type": "QuantitativeValue",
+            "value": "250",
+            "unitCode": "MTK"
+        },
+        "numberOfBedrooms": 3,
+        "numberOfBathroomsTotal": 4
+    }
+    </script>
+    
     <style>
-        /* Estilos Globais e Personalizados */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #121212; /* --black */
-            color: #FFFFFF; /* --white */
-            line-height: 1.6;
-        }
-
-        /* Animações de Scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Estilos do Lightbox da Galeria */
-        .lightbox {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 1000; opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        .lightbox.active { opacity: 1; pointer-events: all; }
-        .lightbox img { max-width: 90%; max-height: 80%; object-fit: contain; }
-        .lightbox-close, .lightbox-prev, .lightbox-next {
-            position: absolute; color: white; font-size: 2rem;
-            cursor: pointer; user-select: none;
-        }
-        .lightbox-close { top: 20px; right: 30px; }
-        .lightbox-prev { left: 30px; }
-        .lightbox-next { right: 30px; }
-
-        /* Layout Dual */
-        .dual-container { display: flex; min-height: 100vh; }
-        .text-side {
-            flex: 1;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') center/cover no-repeat;
-            display: flex; align-items: center; justify-content: center; padding: 2rem;
-        }
-        .text-content { max-width: 500px; text-align: center; }
-        .font-title { font-family: 'Playfair Display', serif; }
-        .gold-text { color: #D4AF37; }
-        .gold-border { border-color: #D4AF37; }
-        .gold-bg { background-color: #D4AF37; }
-        .hover-gold-bg:hover { background-color: #b8962d; }
-        .hover-gold-text:hover { color: #D4AF37; }
-
-        /* Formulário */
-        .form-side {
-            flex: 1; background-color: #1A1A1A; /* --dark-gray */
-            display: flex; align-items: center; justify-content: center; padding: 2rem;
-        }
-        .input-group input {
-            width: 100%; background: transparent; border: none;
-            border-bottom: 1px solid #E5E5E5; /* --light-gray */
-            padding: 1rem 0; color: #FFFFFF; font-size: 1rem;
-        }
-        .input-group input:focus { outline: none; border-bottom-color: #D4AF37; }
-        .input-group label {
-            position: absolute; left: 0; top: 1rem; color: #E5E5E5;
-            transition: all 0.3s; pointer-events: none;
-        }
-        .input-group input:focus + label,
-        .input-group input:not(:placeholder-shown) + label {
-            top: -0.5rem; font-size: 0.8rem; color: #D4AF37;
-        }
-        
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .dual-container { flex-direction: column; }
-            .text-side, .form-side { min-height: auto; }
-        }
+        /* Estilos Globais e Personalizados - Minificados */
+        html{scroll-behavior:smooth}body{font-family:'Montserrat',sans-serif;background-color:#121212;color:#FFFFFF;line-height:1.6}.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease-out,transform .8s ease-out}.reveal.visible{opacity:1;transform:translateY(0)}.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);display:flex;justify-content:center;align-items:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .3s ease}.lightbox.active{opacity:1;pointer-events:all}.lightbox img{max-width:90%;max-height:80%;object-fit:contain}.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;color:white;font-size:2rem;cursor:pointer;user-select:none}.lightbox-close{top:20px;right:30px}.lightbox-prev{left:30px}.lightbox-next{right:30px}.dual-container{display:flex;min-height:100vh}.text-side{flex:1;background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') center/cover no-repeat;display:flex;align-items:center;justify-content:center;padding:2rem}.text-content{max-width:500px;text-align:center}.font-title{font-family:'Playfair Display',serif}.gold-text{color:#D4AF37}.gold-border{border-color:#D4AF37}.gold-bg{background-color:#D4AF37}.hover-gold-bg:hover{background-color:#b8962d}.hover-gold-text:hover{color:#D4AF37}.form-side{flex:1;background-color:#1A1A1A;display:flex;align-items:center;justify-content:center;padding:2rem}.input-group input{width:100%;background:transparent;border:none;border-bottom:1px solid #E5E5E5;padding:1rem 0;color:#FFFFFF;font-size:1rem}.input-group input:focus{outline:none;border-bottom-color:#D4AF37}.input-group label{position:absolute;left:0;top:1rem;color:#E5E5E5;transition:all .3s;pointer-events:none}.input-group input:focus+label,.input-group input:not(:placeholder-shown)+label{top:-.5rem;font-size:.8rem;color:#D4AF37}@media (max-width:768px){.dual-container{flex-direction:column}.text-side,.form-side{min-height:auto}}
     </style>
 </head>
 <body>
@@ -105,7 +103,7 @@
                 <a href="#galeria" class="text-white hover-gold-text transition font-title">Galeria</a>
                 <a href="#localizacao" class="text-white hover-gold-text transition font-title">Localização</a>
             </nav>
-            <button id="mobile-menu-button" class="md:hidden text-white"><i class="fas fa-bars fa-lg"></i></button>
+            <button id="mobile-menu-button" class="md:hidden text-white" aria-label="Abrir menu"><i class="fas fa-bars fa-lg"></i></button>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
             <a href="#diferenciais" class="block py-2 px-6 text-white hover:bg-gray-800">Diferenciais</a>
@@ -158,22 +156,22 @@
             <h2 class="text-4xl mb-12 text-center gold-text font-title">DIFERENCIAIS</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="feature text-center p-8 bg-dark-gray border border-gray-800 hover:gold-border hover:-translate-y-2 transition-transform duration-300">
-                    <i class="fas fa-swimmer fa-3x gold-text mb-4"></i>
+                    <i class="fas fa-swimmer fa-3x gold-text mb-4" aria-hidden="true"></i>
                     <h3 class="text-xl gold-text mb-2 font-title">Piscina com Borda Infinita</h3>
                     <p class="text-light-gray">Uma vista deslumbrante que se funde com o horizonte da Chapada.</p>
                 </div>
                 <div class="feature text-center p-8 bg-dark-gray border border-gray-800 hover:gold-border hover:-translate-y-2 transition-transform duration-300">
-                    <i class="fas fa-utensils fa-3x gold-text mb-4"></i>
+                    <i class="fas fa-utensils fa-3x gold-text mb-4" aria-hidden="true"></i>
                     <h3 class="text-xl gold-text mb-2 font-title">Espaço Gourmet</h3>
                     <p class="text-light-gray">Área equipada para receber amigos e família com sofisticação.</p>
                 </div>
                 <div class="feature text-center p-8 bg-dark-gray border border-gray-800 hover:gold-border hover:-translate-y-2 transition-transform duration-300">
-                    <i class="fas fa-cogs fa-3x gold-text mb-4"></i>
+                    <i class="fas fa-cogs fa-3x gold-text mb-4" aria-hidden="true"></i>
                     <h3 class="text-xl gold-text mb-2 font-title">Automação Residencial</h3>
                     <p class="text-light-gray">Controle de iluminação, som e climatização na palma da sua mão.</p>
                 </div>
                 <div class="feature text-center p-8 bg-dark-gray border border-gray-800 hover:gold-border hover:-translate-y-2 transition-transform duration-300">
-                    <i class="fas fa-solar-panel fa-3x gold-text mb-4"></i>
+                    <i class="fas fa-solar-panel fa-3x gold-text mb-4" aria-hidden="true"></i>
                     <h3 class="text-xl gold-text mb-2 font-title">Energia Solar</h3>
                     <p class="text-light-gray">Sustentabilidade e economia com sistema fotovoltaico integrado.</p>
                 </div>
@@ -188,16 +186,19 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="p-4 border border-gray-800">
                     <img src="./img/planta 3.jpg" 
+                         loading="lazy"
+                         width="800" height="600"
                          onerror="this.onerror=null;this.src='https://placehold.co/800x600/1A1A1A/FFFFFF?text=Planta+Indispon%C3%ADvel';"
-                         alt="Planta da Casa Serra" class="w-full h-auto">
+                         alt="Planta da Casa Serra - Residência de luxo com 250m², 3 suítes e 4 casas de banho"
+                         class="w-full h-auto">
                 </div>
                 <div>
                     <h3 class="text-3xl gold-text mb-4 font-title">Casa Serra</h3>
                     <p class="text-light-gray mb-4">Uma residência que privilegia a integração de ambientes e a vista para a natureza. Ideal para quem busca conforto e sofisticação.</p>
                     <ul class="text-white space-y-2">
-                        <li><i class="fas fa-ruler-combined gold-text mr-2"></i>Área de 250m²</li>
-                        <li><i class="fas fa-bed gold-text mr-2"></i>3 Suítes</li>
-                        <li><i class="fas fa-bath gold-text mr-2"></i>4 Casas de Banho</li>
+                        <li><i class="fas fa-ruler-combined gold-text mr-2" aria-hidden="true"></i>Área de 250m²</li>
+                        <li><i class="fas fa-bed gold-text mr-2" aria-hidden="true"></i>3 Suítes</li>
+                        <li><i class="fas fa-bath gold-text mr-2" aria-hidden="true"></i>4 Casas de Banho</li>
                     </ul>
                 </div>
             </div>
@@ -211,23 +212,31 @@
             <div class="gallery-grid grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="gallery-item cursor-pointer">
                     <img src="./img/frontal.jpg" 
+                         loading="lazy"
+                         width="400" height="400"
                          onerror="this.onerror=null;this.src='https://placehold.co/800x800/1A1A1A/D4AF37?text=Imagem+1';"
-                         alt="Fachada da residência de luxo">
+                         alt="Fachada da residência de luxo Vista dos Guimarães">
                 </div>
                 <div class="gallery-item cursor-pointer">
                     <img src="./img/diagonal.jpg" 
+                         loading="lazy"
+                         width="400" height="400"
                          onerror="this.onerror=null;this.src='https://placehold.co/800x800/1A1A1A/D4AF37?text=Imagem+2';"
-                         alt="Área da piscina ao entardecer">
+                         alt="Área da piscina ao entardecer com vista da Chapada dos Guimarães">
                 </div>
                 <div class="gallery-item cursor-pointer">
                     <img src="./img/fundo.jpg" 
+                         loading="lazy"
+                         width="400" height="400"
                          onerror="this.onerror=null;this.src='https://placehold.co/800x800/1A1A1A/D4AF37?text=Imagem+3';"
-                         alt="Interior da sala de estar com design moderno">
+                         alt="Interior da sala de estar com design moderno e sofisticado">
                 </div>
                 <div class="gallery-item cursor-pointer">
                     <img src="./img/interior 2.jpg" 
+                         loading="lazy"
+                         width="400" height="400"
                          onerror="this.onerror=null;this.src='https://placehold.co/800x800/1A1A1A/D4AF37?text=Imagem+4';"
-                         alt="Cozinha gourmet com acabamentos de luxo">
+                         alt="Cozinha gourmet com acabamentos de luxo e equipamentos de ponta">
                 </div>
             </div>
         </div>
@@ -235,10 +244,10 @@
 
     <!-- Lightbox da Galeria -->
     <div id="lightbox" class="lightbox">
-        <span id="lightbox-close" class="lightbox-close">&times;</span>
-        <img id="lightbox-img" src="">
-        <span id="lightbox-prev" class="lightbox-prev">&#10094;</span>
-        <span id="lightbox-next" class="lightbox-next">&#10095;</span>
+        <span id="lightbox-close" class="lightbox-close" aria-label="Fechar galeria">&times;</span>
+        <img id="lightbox-img" src="" alt="Visualização ampliada da imagem">
+        <span id="lightbox-prev" class="lightbox-prev" aria-label="Imagem anterior">&#10094;</span>
+        <span id="lightbox-next" class="lightbox-next" aria-label="Próxima imagem">&#10095;</span>
     </div>
 
     <!-- Seção Localização -->
@@ -248,14 +257,14 @@
             <p class="text-center mb-8 gold-text italic">Acessível e cercado por uma vista privilegiada</p>
             <div class="map border gold-border p-1">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.6789012345!2d-55.75!3d-15.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDI3JzAwLjAiUyA1NcKwNDUnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" title="Localização da Vista dos Guimarães na Chapada dos Guimarães"></iframe>
             </div>
         </div>
     </section>
 
     <footer class="bg-black text-center py-8 border-t border-gray-800">
         <p>© <span id="year"></span> Vista dos Guimarães. Todos os direitos reservados.</p>
-        <img src="https://placehold.co/120x40/121212/D4AF37?text=Logo+Dev" alt="Logo Dev Soluciona" class="mx-auto mt-4">
+        <img src="https://placehold.co/120x40/121212/D4AF37?text=Logo+Dev" alt="Logo Dev Soluciona" class="mx-auto mt-4" loading="lazy">
     </footer>
 
     <script>
@@ -359,7 +368,6 @@
                     alert("Algo deu errado, tente novamente.");
                 });
             });
-
 
             // --- Lógica do Ano no Rodapé ---
             document.getElementById('year').textContent = new Date().getFullYear();

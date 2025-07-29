@@ -1,0 +1,30 @@
+Relatório de Performance e SEO - Vista dos Guimarães
+Data: Tue Jul 29 02:15:11 PM UTC 2025
+==================================================
+
+Informações do Sistema:
+- Sistema: Linux
+- Kernel: 6.12.8+
+- Data: Tue Jul 29 02:15:11 PM UTC 2025
+
+Tamanho do Site:
+16M	.
+
+Arquivos Importantes:
+✅ index.html
+✅ sitemap.xml
+✅ robots.txt
+
+Análise de Imagens:
+Total de imagens: 21
+59K ./img/ambiente_natural-removebg-preview.png
+82K ./img/arquitetura-removebg-preview.png
+1.8M ./img/diagonal.jpg
+1.8M ./img/frontal.jpg
+1.8M ./img/fundo.jpg
+53K ./img/localização-removebg-preview.png
+236K ./img/optimized/diagonal.jpg
+233K ./img/optimized/frontal.jpg
+243K ./img/optimized/fundo.jpg
+128K ./img/optimized/interior-1.jpg
+
